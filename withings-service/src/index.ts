@@ -58,9 +58,9 @@ export default {
 
     if (url.pathname === "/connect" && request.method === "GET") {
       const state = randomState();
-      await env.DB.prepare("INSERT OR REPLACE INTO oauth_state (id, created_at) VALUES (1, ?)")
-        .bind(Math.floor(Date.now()/1000)).run();
-      await env.DB.prepare("CREATE TABLE IF NOT EXISTS oauth_state (id INTEGER PRIMARY KEY, state TEXT, created_at INTEGER)").run();
+      await env.DB.prepare("INSERT OR REPLACE INTO oauth_state (id, state, created_at) VALUES (1, ?, ?)")
+        .bind(state, Math.floor(Date.now()/1000)).run();
+      /* OAuth state is one-time and expires after ten minutes. */
       await env.DB.prepare("UPDATE oauth_state SET state=?, created_at=? WHERE id=1")
         .bind(state, Math.floor(Date.now()/1000)).run();
       const target = new URL("https://account.withings.com/oauth2_user/authorize2");
