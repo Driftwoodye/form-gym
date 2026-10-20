@@ -93,7 +93,7 @@ function formattedDate(str){return parseDate(str).toLocaleDateString('en-GB',{da
 function escapeHtml(str){return String(str??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function uid(){return (globalThis.crypto?.randomUUID?.()||String(Date.now())+'_'+Math.random().toString(36).slice(2))}
 const defaultData=()=>({version:1,startDate:dateISO(),sessions:[],active:null,measurements:[],cardio:[],customWorkouts:[],settings:{restTimer:true}});
-function readData(){try{const parsed=JSON.parse(localStorage.getItem(KEY));if(parsed&&Array.isArray(parsed.sessions)&&Array.isArray(parsed.measurements))return {...defaultData(),...parsed,settings:{...defaultData().settings,...(parsed.settings||{})}}}catch{}return defaultData()}
+function readData(){try{const parsed=JSON.parse(localStorage.getItem(KEY));if(parsed&&Array.isArray(parsed.sessions)&&Array.isArray(parsed.measurements))return {...defaultData(),...parsed,cardio:Array.isArray(parsed.cardio)?parsed.cardio:[],customWorkouts:Array.isArray(parsed.customWorkouts)?parsed.customWorkouts:[],settings:{...defaultData().settings,...(parsed.settings||{})}}}catch{}return defaultData()}
 let data=readData(), tab='home', selectedDay=Object.keys(WORK).includes(DAYS[weekday()])?DAYS[weekday()]:'mon', guideFilter='',activeModal=null;
 function save(){try{localStorage.setItem(KEY,JSON.stringify(data))}catch(e){alert('Your browser could not save workout data. Please export a backup.')}}
 function weekNumber(){return Math.max(1,Math.floor((parseDate(dateISO())-parseDate(data.startDate))/86400000/7)+1)}
