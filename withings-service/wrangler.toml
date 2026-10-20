@@ -1,0 +1,8 @@
+name = "form-withings"
+main = "src/index.ts"
+compatibility_date = "2026-10-20"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "form-withings"
+database_id = "REPLACE_WITH_D1_DATABASE_ID"
