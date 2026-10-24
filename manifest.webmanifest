@@ -1,7 +1,7 @@
 {
-  "name": "FORM — Your Physique Project",
-  "short_name": "FORM",
-  "description": "Offline-first training tracker with your 12-week muscle-building plan.",
+  "name": "Repzilla — Your Physique Project",
+  "short_name": "Repzilla",
+  "description": "Private, offline-first workout tracker for your training plan.",
   "lang": "en",
   "start_url": "./",
   "scope": "./",
