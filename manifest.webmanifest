@@ -2,7 +2,7 @@
   "id": "./",
   "name": "Repzilla",
   "short_name": "Repzilla",
-  "description": "Private, offline-first workout tracker for your training plan.",
+  "description": "The Body Modification Project — a theatrical, offline-first workout journal.",
   "lang": "en",
   "start_url": "./?app=repzilla",
   "scope": "./",
