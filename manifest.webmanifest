@@ -1,25 +1,17 @@
 {
-  "id": "./",
-  "name": "Repzilla",
+  "name": "Repzilla — The Body Modification Project",
   "short_name": "Repzilla",
-  "description": "The Body Modification Project — a theatrical, offline-first workout journal.",
-  "lang": "en",
+  "description": "A theatrical, Rocky Horror-inspired workout journal.",
   "start_url": "./?app=repzilla",
   "scope": "./",
   "display": "standalone",
-  "background_color": "#10070d",
-  "theme_color": "#10070d",
+  "background_color": "#090608",
+  "theme_color": "#090608",
   "icons": [
     {
-      "src": "icon-192.png?v=repzilla",
-      "sizes": "192x192",
-      "type": "image/png",
-      "purpose": "any maskable"
-    },
-    {
-      "src": "icon-512.png?v=repzilla",
-      "sizes": "512x512",
-      "type": "image/png",
+      "src": "icon.svg?v=repzilla-v11",
+      "sizes": "any",
+      "type": "image/svg+xml",
       "purpose": "any maskable"
     }
   ]
