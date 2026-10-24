@@ -3,8 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0d151b">
-<meta name="description" content="Private, offline-first workout tracker for your training plan.">
+<meta name="theme-color" content="#10070d">
+<meta name="description" content="A theatrical, Rocky Horror-inspired workout journal. Private, offline-first strength and cardio tracking.">
 <link rel="manifest" href="manifest.webmanifest?v=repzilla">
 <link rel="icon" type="image/png" href="icon-192.png?v=repzilla">
 <title>Repzilla — Your Physique Project</title>
@@ -35,13 +35,34 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(30px,6vw,49px);letter-spacing:-.055em
 .photo-credit a{color:var(--muted)}
 @media(max-width:370px){.exercise-photo{width:54px;height:54px;flex-basis:54px}.exlog .exercise-photo{width:52px;height:52px;flex-basis:52px}.workcard{gap:9px}.workcard .desc h3{font-size:13px}}
 
-/* REPZILLA GLAM ROCK THEME v1 */
+/* REPZILLA: MIDNIGHT DOUBLE-FEATURE / ROCKY HORROR-INSPIRED THEME */
 :root{--bg:#10070d;--bg2:#1a0b13;--panel:#1d1118;--panel2:#29131d;--border:#512536;--muted:#c0a8b0;--white:#fff3f5;--lime:#ff2463;--lime2:#ff5c8b;--orange:#ffd2a0;--red:#ff5578;--r:17px}
 body{background:radial-gradient(ellipse at 50% -18%,#4b1028 0%,var(--bg) 48%);background-attachment:fixed}
 .brandmark{background:var(--lime);color:#210711;border-radius:50%;box-shadow:0 0 24px #ff246333}
 .brandword{font-family:Impact,"Arial Black",system-ui,sans-serif;letter-spacing:.08em;color:#ff4779;text-shadow:0 2px 0 #5e102b,0 0 22px #ff24632a}
 .brandsub{color:#f1b5c6;letter-spacing:.12em}
-h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+h1,h2,h3{font-family:Impact,"Arial Black",Haettenschweiler,system-ui,sans-serif}
+.eyebrow{letter-spacing:.14em}
+.hero{min-height:250px;background:radial-gradient(ellipse at 82% 12%,#ff1c5a55 0%,transparent 33%),radial-gradient(ellipse at 4% 90%,#8b103b70 0%,transparent 42%),repeating-linear-gradient(105deg,#16070d 0 14px,#210a14 14px 28px);border:1px solid #a12b50;box-shadow:inset 0 0 0 4px #16070d,inset 0 0 0 5px #6c1c38,0 15px 35px #0008}
+.hero:before{content:"★  ✦  ★";position:absolute;right:14px;top:12px;color:#ff4779;font-size:19px;letter-spacing:.2em;text-shadow:0 0 18px #ff1e60;transform:rotate(9deg)}
+.hero:after{content:"";right:-35px;top:auto;bottom:-80px;width:220px;height:170px;border:0;border-radius:50%;background:radial-gradient(ellipse at center,#ff24632c 0%,transparent 70%);pointer-events:none}
+.hero .eyebrow{display:inline-block;color:#ffd2a0;background:#3c1022;border:1px solid #9e3152;border-radius:4px;padding:6px 9px}
+.hero h1{font-size:clamp(38px,9vw,68px);line-height:.94;max-width:600px;margin:17px 0 13px;text-shadow:2px 3px 0 #5e102b,0 0 25px #ff1e603d}
+.hero .lead{font-size:14px;max-width:440px}
+.brandmark{border-radius:8px 8px 50% 50%;background:#ff2463}
+.brandword{font-size:24px;letter-spacing:.04em;font-style:italic;transform:skew(-5deg)}
+.brandsub{font-size:9px;color:#ffd2a0;letter-spacing:.09em}
+.sectionline h2{font-size:25px;text-transform:uppercase;letter-spacing:.015em}
+.card,.record{border-radius:12px}.stat{border-radius:9px}
+.btn{border-radius:5px;text-transform:uppercase;letter-spacing:.035em;font-family:Impact,"Arial Black",system-ui,sans-serif;font-size:16px}
+.btn.secondary{border-radius:5px}.chip{border-radius:4px;text-transform:uppercase;letter-spacing:.04em}
+.weekday{border-radius:7px}.weekday.active{box-shadow:0 0 18px #ff246344}
+.weekday.complete:after,.setdone.yes{background:#ff2463;color:#240811;border-color:#ff2463}
+.exlog{border-radius:10px}.setdone{border-radius:50%}
+.bottomnav{background:#10070df2;border-top:1px solid #77233f}.navbtn.on{filter:drop-shadow(0 0 7px #ff246355)}
+.progressbar>div{box-shadow:0 0 12px #ff246355}.modal{border-radius:18px 18px 0 0}
+.exercise-photo{border-color:#78334b}::selection{background:#ff2463;color:#16070d}
+@media(min-width:730px){.hero{padding:32px}.hero h1{font-size:66px}}
 .eyebrow,.textbtn,.highlight,.navbtn.on{color:#ff4779}
 .card,.record{background:linear-gradient(145deg,#21121a,#160b11);border-color:#512536;box-shadow:0 8px 24px #0002}
 .hero{background:radial-gradient(ellipse at 95% 0%,#711c3b 0%,transparent 45%),linear-gradient(130deg,#35101f,#180b12 70%);border-color:#87304d}
@@ -156,7 +177,7 @@ function render(){document.title=`Repzilla — ${tab[0].toUpperCase()+tab.slice(
 function header(title,txt,eyebrow='Your programme'){return `<div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p class="lead">${txt}</p>`}
 function activeHint(){if(weekNumber()>12)return `<div class="notice">You have reached week 12 of the starter programme. Review your progress and update the start date in Progress to begin a new cycle.</div>`;if(weekNumber()<=2)return `<div class="notice"><strong>Weeks 1–2 · Getting started:</strong> do only two working sets of each exercise. Focus on learning technique, and stop with 2–3 reps in reserve.</div>`;return `<div class="notice"><strong>Weeks 3–12 · Building muscle:</strong> use the full planned sets. Usually finish each set with 1–3 good reps still possible.</div>`}
 function renderHome(){const idx=weekday(), today=DAYS[idx],work=WORK[today],totalThisWeek=data.sessions.filter(s=>s.date>=monday()&&s.date<=offsetDate(monday(),6)).length,ws=Math.min(100,totalThisWeek/4*100),next=work?today:['mon','tue','thu','sat'].find(d=>!hasDayDone(d))||'mon';const dateText=parseDate(dateISO()).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
-main.innerHTML=`<div class="hero card"><div class="eyebrow">${dateText}</div><h1>In just 7 days,<br>I can make you a man!</h1><p class="lead" style="color:#f2d8e0">Don\u2019t dream it. Train it. Your body modification experiment starts here.</p><div class="row" style="justify-content:flex-start;flex-wrap:wrap"><span class="chip">Week ${weekNumber()} / 12</span><span class="chip muted-chip">Biceps + upper chest focus</span></div></div>
+main.innerHTML=`<div class="hero card"><div class="eyebrow">${dateText}</div><h1>In just 7 days,<br>I can make you a man!</h1><p class="lead" style="color:#f2d8e0">Don\u2019t dream it. Be it. A little muscle, a little madness, and absolutely no ordinary fitness culture.</p><div class="row" style="justify-content:flex-start;flex-wrap:wrap"><span class="chip">Week ${weekNumber()} / 12</span><span class="chip muted-chip">Biceps + upper chest focus</span></div></div>
 <div class="statgrid"><div class="stat"><strong>${totalThisWeek}/4</strong><span>Workouts this week</span></div><div class="stat"><strong>${data.sessions.length}</strong><span>Completed sessions</span></div><div class="stat"><strong>${data.measurements.length}</strong><span>Body check-ins</span></div></div>
 <div class="sectionline"><h2>This week</h2><span class="small">${Math.round(ws)}% complete</span></div><div class="card"><div class="weekgrid">${DAYS.map((d,i)=>`<button class="weekday ${d===today?'active':''} ${hasDayDone(d)?'complete':''}" data-goto-day="${d}" aria-label="${DAYNAMES[i]}"><strong>${DAYS_SHORT[i]}</strong><span>${WORK[d]?'LIFT':i===6?'OFF':'EASY'}</span></button>`).join('')}</div><div class="gap18"></div><div class="progressbar"><div style="width:${ws}%"></div></div></div>
 <div class="sectionline"><h2>${work?"Today's focus":"Today is a recovery day"}</h2></div>
