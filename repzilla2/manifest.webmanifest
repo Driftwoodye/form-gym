@@ -1,0 +1,18 @@
+{
+  "name": "Repzilla 2 — The Body Modification Project",
+  "short_name": "Repzilla 2",
+  "description": "A theatrical offline-first workout journal.",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#090608",
+  "theme_color": "#090608",
+  "icons": [
+    {
+      "src": "icon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
