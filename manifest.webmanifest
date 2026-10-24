@@ -1,15 +1,15 @@
 {
   "name": "Repzilla — The Body Modification Project",
   "short_name": "Repzilla",
-  "description": "A theatrical, Rocky Horror-inspired workout journal.",
-  "start_url": "./?app=repzilla",
+  "description": "A theatrical offline-first workout journal.",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#090608",
   "theme_color": "#090608",
   "icons": [
     {
-      "src": "icon.svg?v=repzilla-v11",
+      "src": "icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any maskable"
