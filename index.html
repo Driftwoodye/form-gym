@@ -34,11 +34,47 @@ h1,h2,h3,p{margin-top:0}h1{font-size:clamp(30px,6vw,49px);letter-spacing:-.055em
 .photo-credit{font-size:10px;line-height:1.5;color:#93a5aa;margin:-5px 0 14px}
 .photo-credit a{color:var(--muted)}
 @media(max-width:370px){.exercise-photo{width:54px;height:54px;flex-basis:54px}.exlog .exercise-photo{width:52px;height:52px;flex-basis:52px}.workcard{gap:9px}.workcard .desc h3{font-size:13px}}
+
+/* REPZILLA GLAM ROCK THEME v1 */
+:root{--bg:#10070d;--bg2:#1a0b13;--panel:#1d1118;--panel2:#29131d;--border:#512536;--muted:#c0a8b0;--white:#fff3f5;--lime:#ff2463;--lime2:#ff5c8b;--orange:#ffd2a0;--red:#ff5578;--r:17px}
+body{background:radial-gradient(ellipse at 50% -18%,#4b1028 0%,var(--bg) 48%);background-attachment:fixed}
+.brandmark{background:var(--lime);color:#210711;border-radius:50%;box-shadow:0 0 24px #ff246333}
+.brandword{font-family:Impact,"Arial Black",system-ui,sans-serif;letter-spacing:.08em;color:#ff4779;text-shadow:0 2px 0 #5e102b,0 0 22px #ff24632a}
+.brandsub{color:#f1b5c6;letter-spacing:.12em}
+h1,h2,h3{font-family:Inter,ui-sans-serif,system-ui,sans-serif}
+.eyebrow,.textbtn,.highlight,.navbtn.on{color:#ff4779}
+.card,.record{background:linear-gradient(145deg,#21121a,#160b11);border-color:#512536;box-shadow:0 8px 24px #0002}
+.hero{background:radial-gradient(ellipse at 95% 0%,#711c3b 0%,transparent 45%),linear-gradient(130deg,#35101f,#180b12 70%);border-color:#87304d}
+.hero:after{border-color:#ff246321}
+.hero h1{font-family:Impact,"Arial Black",system-ui,sans-serif;letter-spacing:.005em;text-transform:uppercase;color:#ff4779;text-shadow:0 2px 0 #570e29}
+.btn{background:linear-gradient(100deg,#ff1e60,#ff4779);border-color:#ff4779;color:#210711;box-shadow:0 4px 16px #ff246322}
+.btn.secondary{background:#2b1520;border-color:#693047;color:#fff0f4;box-shadow:none}
+.btn.ghost{color:#f1b5c6}
+.chip{background:#ff24631b;border-color:#8d3450;color:#ff8aaa}
+.muted-chip{background:#25131c;color:#c0a8b0;border-color:#512536}
+.stat,.weekday,.numinp,.inputfield{background:#160c12;border-color:#4a2634}
+.weekday.active,.pill.on{background:#ff2463;border-color:#ff2463;color:#240811}
+.weekday.active span{color:#4d0d23}
+.weekday.complete:after,.setdone.yes{background:#ff2463;color:#240811;border-color:#ff2463}
+.progressbar{background:#492332}.progressbar>div{background:linear-gradient(90deg,#ff2463,#ff7da0)}
+.exicon{background:#ff246311;border-color:#6c3044;color:#ff4779}
+.setdone{background:#2a1720;border-color:#593044}
+.bottomnav{background:#160b12ee;border-color:#512536}
+.navbtn{color:#b99aa5}
+.sessiontoolbar{background:#10070dee;border-color:#351723}
+.modal{background:#21121a;border-color:#6b3045}
+.timer{background:#ff2463;color:#240811}.timer button{background:#350e20;color:#ff8aaa}
+.notice{background:#ff24630d;border-color:#693047;color:#f4dbe2}.notice strong{color:#ff7097}
+.inputfield:focus,.numinp:focus{border-color:#ff4779}
+button:focus-visible,input:focus-visible,textarea:focus-visible{outline-color:#ff4779}
+.weekday.complete{border-color:#b43b61}
+.chart .plot{stroke:#ff4779}.chart .dot{fill:#ff4779}
+
 </style>
 </head>
 <body>
 <div class="shell">
-<header class="top"><div class="brand"><div class="brandmark" aria-hidden="true"><svg viewBox="0 0 40 40" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><path d="M4 14v12M10 10v20M15 20h10M30 10v20M36 14v12"/></svg></div><div><div class="brandword">REPZILLA</div><div class="brandsub">YOUR PHYSIQUE PROJECT</div></div></div><div class="topright"><strong>12-WEEK PLAN</strong><br><span id="headerWeek">Week 1</span></div></header>
+<header class="top"><div class="brand"><div class="brandmark" aria-hidden="true"><svg viewBox="0 0 40 40" width="28" height="28" fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round"><path d="M4 14v12M10 10v20M15 20h10M30 10v20M36 14v12"/></svg></div><div><div class="brandword">REPZILLA</div><div class="brandsub">THE BODY MODIFICATION PROJECT</div></div></div><div class="topright"><strong>12-WEEK PLAN</strong><br><span id="headerWeek">Week 1</span></div></header>
 <main id="main"></main>
 <footer class="footnote">Repzilla · Private workout journal · Made for your training routine</footer>
 </div>
@@ -120,11 +156,11 @@ function render(){document.title=`Repzilla — ${tab[0].toUpperCase()+tab.slice(
 function header(title,txt,eyebrow='Your programme'){return `<div class="eyebrow">${eyebrow}</div><h1>${title}</h1><p class="lead">${txt}</p>`}
 function activeHint(){if(weekNumber()>12)return `<div class="notice">You have reached week 12 of the starter programme. Review your progress and update the start date in Progress to begin a new cycle.</div>`;if(weekNumber()<=2)return `<div class="notice"><strong>Weeks 1–2 · Getting started:</strong> do only two working sets of each exercise. Focus on learning technique, and stop with 2–3 reps in reserve.</div>`;return `<div class="notice"><strong>Weeks 3–12 · Building muscle:</strong> use the full planned sets. Usually finish each set with 1–3 good reps still possible.</div>`}
 function renderHome(){const idx=weekday(), today=DAYS[idx],work=WORK[today],totalThisWeek=data.sessions.filter(s=>s.date>=monday()&&s.date<=offsetDate(monday(),6)).length,ws=Math.min(100,totalThisWeek/4*100),next=work?today:['mon','tue','thu','sat'].find(d=>!hasDayDone(d))||'mon';const dateText=parseDate(dateISO()).toLocaleDateString('en-GB',{weekday:'long',day:'numeric',month:'long'});
-main.innerHTML=`<div class="hero card"><div class="eyebrow">${dateText}</div><h1>Build the body<br>you want.</h1><p class="lead" style="color:#ced9d2">One good workout at a time. Log every set, improve gradually, and let consistency do the work.</p><div class="row" style="justify-content:flex-start;flex-wrap:wrap"><span class="chip">Week ${weekNumber()} / 12</span><span class="chip muted-chip">Biceps + upper chest focus</span></div></div>
+main.innerHTML=`<div class="hero card"><div class="eyebrow">${dateText}</div><h1>In just 7 days,<br>I can make you a man!</h1><p class="lead" style="color:#f2d8e0">Don\u2019t dream it. Train it. Your body modification experiment starts here.</p><div class="row" style="justify-content:flex-start;flex-wrap:wrap"><span class="chip">Week ${weekNumber()} / 12</span><span class="chip muted-chip">Biceps + upper chest focus</span></div></div>
 <div class="statgrid"><div class="stat"><strong>${totalThisWeek}/4</strong><span>Workouts this week</span></div><div class="stat"><strong>${data.sessions.length}</strong><span>Completed sessions</span></div><div class="stat"><strong>${data.measurements.length}</strong><span>Body check-ins</span></div></div>
 <div class="sectionline"><h2>This week</h2><span class="small">${Math.round(ws)}% complete</span></div><div class="card"><div class="weekgrid">${DAYS.map((d,i)=>`<button class="weekday ${d===today?'active':''} ${hasDayDone(d)?'complete':''}" data-goto-day="${d}" aria-label="${DAYNAMES[i]}"><strong>${DAYS_SHORT[i]}</strong><span>${WORK[d]?'LIFT':i===6?'OFF':'EASY'}</span></button>`).join('')}</div><div class="gap18"></div><div class="progressbar"><div style="width:${ws}%"></div></div></div>
 <div class="sectionline"><h2>${work?"Today's focus":"Today is a recovery day"}</h2></div>
-<div class="card"><div class="eyebrow" style="margin-bottom:6px">${work?escapeHtml(work.tag):'Keep moving, stay fresh'}</div><h2 style="margin-bottom:7px">${work?escapeHtml(work.title):idx===6?'Rest and recover':'Easy cardio or a walk'}</h2><p class="small">${work?escapeHtml(work.note):idx===6?'Take a full rest day, or enjoy an easy walk.':'Optional: 20–35 minutes of easy running, cycling or walking. You should still be able to talk comfortably.'}</p><div class="gap8"></div><div class="actionrow">${work?`<button class="btn" data-start-day="${today}">${svgIcon('play')} ${data.active?.day===today?'Resume workout':hasDayDone(today)?'Train again':'Start workout'}</button>`:`<button class="btn" data-start-day="${next}">Open ${DAYNAMES[DAYS.indexOf(next)]} workout ${svgIcon('chevron')}</button>`}<button class="btn secondary" data-action="plan">See full plan</button></div></div>
+<div class="card"><div class="eyebrow" style="margin-bottom:6px">${work?escapeHtml(work.tag):'Keep moving, stay fresh'}</div><h2 style="margin-bottom:7px">${work?escapeHtml(work.title):idx===6?'Rest and recover':'Easy cardio or a walk'}</h2><p class="small">${work?escapeHtml(work.note):idx===6?'Take a full rest day, or enjoy an easy walk.':'Optional: 20–35 minutes of easy running, cycling or walking. You should still be able to talk comfortably.'}</p><div class="gap8"></div><div class="actionrow">${work?`<button class="btn" data-start-day="${today}">${svgIcon('play')} ${data.active?.day===today?'Resume workout':hasDayDone(today)?'Train again':"Let’s do the Time Warp"}</button>`:`<button class="btn" data-start-day="${next}">Open ${DAYNAMES[DAYS.indexOf(next)]} workout ${svgIcon('chevron')}</button>`}<button class="btn secondary" data-action="plan">See full plan</button></div></div>
 ${activeHint()}<div class="sectionline"><h2>How to get results</h2></div><div class="card stack"><div><strong>1. Follow the exercises</strong><div class="small">Use the exercise guide and video demonstrations when something is unfamiliar.</div></div><div class="divider"></div><div><strong>2. Log every completed set</strong><div class="small">Record weight and reps, then tap ✓. The app saves as you go.</div></div><div class="divider"></div><div><strong>3. Beat your previous performance</strong><div class="small">When all working sets reach the top of their rep range with good form, increase weight slightly next time.</div></div></div>`}
 function renderPlan(){main.innerHTML=header('Your weekly plan','Four lifting days, optional easy cardio, and space to recover.')+`<div class="card"><div class="row"><div><strong>12-week progressive programme</strong><div class="small">Weeks 1–2: introduction · Weeks 3–12: full plan</div></div><span class="chip">Week ${weekNumber()}</span></div></div>`+DAYS.map((d,i)=>{if(!WORK[d])return `<div class="record"><div class="row"><div><h3>${DAYNAMES[i]}</h3><div class="small">${i===6?'Rest day':'Optional 20–35 min easy cardio or recovery'}</div></div><span class="chip muted-chip">${i===6?'OFF':'EASY'}</span></div></div>`;const w=WORK[d];return `<div class="record"><div class="row start"><div><div class="eyebrow" style="font-size:10px;margin-bottom:5px">${DAYNAMES[i]}</div><h3>${escapeHtml(w.title)}</h3><div class="small">${w.list.length} exercises · ${totalSets(w)} working sets</div></div>${hasDayDone(d)?'<span class="chip">✓ Done</span>':'<span class="chip muted-chip">Lift</span>'}</div><div class="gap18"></div><div class="actionrow"><button class="btn tiny" data-view-day="${d}">See exercises ${svgIcon('chevron')}</button><button class="btn tiny secondary" data-start-day="${d}">Train this day</button></div></div>`}).join('')}
 function renderDayOverview(d){selectedDay=d;tab='train';render()}
